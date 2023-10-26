@@ -25,8 +25,10 @@ if {![istarget aarch64*-*-*] } then {
     return
 }
 
+# Darwin doesn't have SVE and the testing is expensive, so make it optional.
+# Assembler support is also not completely uniform
 # Darwin does not support .variant_pcs at present.
-if { [istarget *-*-darwin*] } then {
+if { [istarget *-*-darwin*] && ![info exists env(DARWIN_TEST_SVE)]} then {
     return
 }
 
