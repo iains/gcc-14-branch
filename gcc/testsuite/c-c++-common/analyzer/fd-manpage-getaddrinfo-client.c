@@ -27,12 +27,11 @@ the source, must acknowledge the copyright and authors of this work.
 */
 
 /* { dg-require-effective-target sockets } */
-/* { dg-additional-options "-Wno-analyzer-too-complex" } */
 
 /* Needed on some targets until we have exception-handling working (PR 111475).  */
 /* { dg-additional-options "-fno-exceptions" } */
 
-/* { dg-skip-if "" { hppa*-*-hpux* powerpc*-*-aix* } } */
+/* { dg-skip-if "PR113150" { hppa*-*-hpux* powerpc*-*-aix* *-*-darwin* } } */
 
 #include <sys/types.h>
 #include <sys/socket.h>
