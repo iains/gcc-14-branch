@@ -14,6 +14,10 @@ Notable additions for macOS/Darwin are:
 Please see gcc/config/aarch64/darwinpcs.md for a description of the AArch64 ABI
 support.
 
+**_The current release is GCC-14.1-darwin-r1. (June 2024)_**
+
+This is a bugfix release; since we now have support for handling the availability attribute, we need to remove the `fixincludes` that corrected missing cases.
+
 **_The current release is GCC-14.1-darwin-r0. (May 2024)_**
 
 This release:
