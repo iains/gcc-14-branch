@@ -14,7 +14,20 @@ Notable additions for macOS/Darwin are:
 Please see gcc/config/aarch64/darwinpcs.md for a description of the AArch64 ABI
 support.
 
-**_The current release is GCC-14.2-darwin-r0. (August 2024)_**
+**_The current release is GCC-14.2-darwin-r2. (October 2024)_**
+
+This release:
+ * Contains a number of fixes for compatibility with newer Xcode tools
+ * Contains a number of fixes for compatibility with newer SDKs.
+ * Adds support for a clang extension where it accepts GNU attributes in a position where they are not allowed by GCC.
+
+**_GCC-14.2-darwin-r0. (August 2024)_**
+
+This release:
+ * Updates the fixincludes handling to support newer SDKs better.
+ * Recognises -weak_framework in the driver for compatibility with clang.
+
+**_GCC-14.2-darwin-r0. (August 2024)_**
 
 This release:
  * Includes all 14.2 Upstream additions and bug fixes.
