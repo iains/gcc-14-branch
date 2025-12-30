@@ -3700,11 +3700,16 @@ darwin_use_anchors_for_symbol_p (const_rtx symbol)
 {
   if (DARWIN_SECTION_ANCHORS && flag_section_anchors)
     {
-      section *sect;
-      /* If the section contains a zero-sized object it's ineligible.  */
-      sect = SYMBOL_REF_BLOCK (symbol)->sect;
-      /* This should have the effect of disabling anchors for vars that follow
-         any zero-sized one, in a given section.  */
+      tree decl = SYMBOL_REF_DECL (symbol);
+      /* If the symbol would be linker-visible, then it can split at that
+	 so we must disallow.  This is more strict than the default impl.
+	 TODO: add other cases.  */
+      if (decl && DECL_P (decl)
+	  && (TREE_PUBLIC (decl) || !DECL_ARTIFICIAL (decl)))
+	return false;
+
+      /* We mark sections containing unsuitable entries.  */
+      section *sect = SYMBOL_REF_BLOCK (symbol)->sect;
       if (sect->common.flags & SECTION_NO_ANCHOR)
 	return false;
 
